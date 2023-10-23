@@ -46,8 +46,15 @@ public abstract class ClientboundLevelChunkWithLightPacketMixin implements IChun
     ) {
         // custom argument
         this.antixray$batchStartPacket = Arguments.BATCH_START_PACKET.get();
+        var packetListener = Arguments.PACKET_LISTENER.get();
+        final ChunkPacketBlockController controller;
+        if (packetListener != null) {
+            controller = Util.getBlockController(packetListener.player);
+        } else {
+            // Chunk packets may not have the packet listener argument, if they are manually sent by other mods
+            controller = Util.getBlockController(chunk.getLevel());
+        }
 
-        final ChunkPacketBlockController controller = Util.getBlockController(chunk.getLevel());
         final ChunkPacketInfo<BlockState> packetInfo = controller.getChunkPacketInfo((ClientboundLevelChunkWithLightPacket) (Object) this, chunk);
 
         controllerLocalRef.set(controller);

@@ -50,12 +50,15 @@ public abstract class PlayerChunkSenderMixin {
         Operation<Void> original, @Share("startPacket") LocalRef<IClientboundChunkBatchStartPacket> ipacketRef
     ) {
         // Pass the batch start packet to the chunk packets
-        var previous = Arguments.BATCH_START_PACKET.get();
+        var previous0 = Arguments.BATCH_START_PACKET.get();
+        var previous1 = Arguments.PACKET_LISTENER.get();
         Arguments.BATCH_START_PACKET.set(ipacketRef.get());
+        Arguments.PACKET_LISTENER.set(serverGamePacketListenerImpl);
         try {
             original.call(serverGamePacketListenerImpl, serverLevel, levelChunk);
         } finally {
-            Arguments.BATCH_START_PACKET.set(previous);
+            Arguments.BATCH_START_PACKET.set(previous0);
+            Arguments.PACKET_LISTENER.set(previous1);
         }
     }
 

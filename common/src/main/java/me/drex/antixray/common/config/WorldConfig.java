@@ -22,6 +22,7 @@ import java.util.Set;
 
 public class WorldConfig {
     public boolean enabled = false;
+    public boolean usePermission = false;
     public EngineMode engineMode = EngineMode.HIDE;
     public int maxBlockHeight = 64;
     public int updateRadius = 2;
@@ -46,6 +47,7 @@ public class WorldConfig {
     private void loadValues(Toml toml) {
         if (toml == null) return;
         if (toml.contains("enabled")) this.enabled = toml.getBoolean("enabled");
+        if (toml.contains("usePermission")) this.usePermission = toml.getBoolean("usePermission");
         if (toml.contains("engineMode")) {
             EngineMode mode = EngineMode.getById(Math.toIntExact(toml.getLong("engineMode")));
             if (mode != null) {
@@ -101,11 +103,11 @@ public class WorldConfig {
         if (!this.enabled) return DisabledChunkPacketBlockController.NO_OPERATION_INSTANCE;
         return switch (engineMode) {
             case HIDE ->
-                new HideChunkPacketBlockController(level, hiddenBlocks, maxBlockHeight, updateRadius, lavaObscures);
+                new HideChunkPacketBlockController(level, hiddenBlocks, maxBlockHeight, updateRadius, lavaObscures, usePermission);
             case OBFUSCATE ->
-                new ObfuscateChunkPacketBlockController(level, replacementBlocks, hiddenBlocks, maxBlockHeight, updateRadius, lavaObscures);
+                new ObfuscateChunkPacketBlockController(level, replacementBlocks, hiddenBlocks, maxBlockHeight, updateRadius, lavaObscures, usePermission);
             case OBFUSCATE_LAYER ->
-                new ObfuscateLayerChunkPacketBlockController(level, replacementBlocks, hiddenBlocks, maxBlockHeight, updateRadius, lavaObscures);
+                new ObfuscateLayerChunkPacketBlockController(level, replacementBlocks, hiddenBlocks, maxBlockHeight, updateRadius, lavaObscures, usePermission);
         };
     }
 

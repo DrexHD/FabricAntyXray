@@ -2,6 +2,7 @@ package me.drex.antixray.common;
 
 import me.drex.antixray.common.config.Config;
 import me.drex.antixray.common.util.Platform;
+import net.minecraft.server.level.ServerPlayer;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,4 +23,5 @@ public abstract class AntiXray {
 
     public abstract String getConfigFileName();
 
+    public abstract boolean hasBypassPermission(ServerPlayer player);
 }

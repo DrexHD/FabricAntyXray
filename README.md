@@ -7,6 +7,7 @@ Anti Xray is a lightweight fabric mod that allows server owners to combat xrayer
 ```toml
 # Default values
 enabled = false
+usePermission = false
 
 # World specific values
 [overworld]
@@ -30,6 +31,8 @@ hiddenBlocks = ["ancient_debris", "nether_quartz_ore", "nether_gold_ore", "gold_
 ### Config option overview
 
 `enabled` if set to true anti xray will be active in the specified world
+
+`usePermission` if set to true operators and players with `antixray.bypass` will bypass antixray
 
 `engineMode` can either be 1, 2 or 3 see [Engine Modes](#Engine Modes)
 

@@ -33,6 +33,7 @@ dependencies {
         exclude(group: "net.fabricmc.fabric-api")
         transitive(false)
     }
+    include(modImplementation("me.lucko:fabric-permissions-api:${project.fabric_permission_api_version}"))
 }
 
 tasks.withType(org.gradle.jvm.tasks.Jar).configureEach {
