@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.8] - 2024-12-28
+### Changed
+- Mark stable
+
 ## [1.4.7] - 2024-12-11
 ### Added
 - Bypass permission
