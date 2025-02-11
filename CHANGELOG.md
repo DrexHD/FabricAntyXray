@@ -6,8 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.4.9] - 2025-02-11
 ### Fixed
 - Potential networking issues
+- Incompatibility with ServerReplay (@senseiwells)
 
 ## [1.4.8] - 2024-12-28
 ### Changed
